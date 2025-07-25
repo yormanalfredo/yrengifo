@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guía de Instalación de Fail2Ban</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Guía de Instalación de Fail2Ban</h1>
+    <p>Protege tu servidor Linux contra ataques de fuerza bruta.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#requisitos">Requisitos</a></li>
+      <li><a href="#instalacion">Instalación</a></li>
+      <li><a href="#configuracion">Configuración</a></li>
+      <li><a href="#verificacion">Verificación</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="requisitos">
+      <h2>Requisitos</h2>
+      <ul>
+        <li>Servidor con Linux (Debian, Ubuntu, etc.)</li>
+        <li>Acceso root o sudo</li>
+      </ul>
+    </section>
+
+    <section id="instalacion">
+      <h2>Instalación</h2>
+      <pre><code>sudo apt update  
+sudo apt install fail2ban</code></pre>
+    </section>
+
+    <section id="configuracion">
+      <h2>Configuración Básica</h2>
+      <p>Edita el archivo <code>/etc/fail2ban/jail.local</code> para definir reglas:</p>
+      <pre><code>[sshd]  
+enabled = true  
+port = ssh  
+filter = sshd  
+logpath = /var/log/auth.log  
+maxretry = 3</code></pre>
+    </section>
+
+    <section id="verificacion">
+      <h2>Verificación</h2>
+      <p>Reinicia el servicio y verifica su estado:</p>
+      <pre><code>sudo systemctl restart fail2ban  
+sudo fail2ban-client status</code></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Documentación creada por Yorman</p>
+  </footer>
+</body>
+</html>
